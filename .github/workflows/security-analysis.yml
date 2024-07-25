@@ -8,7 +8,7 @@ on:
 
 jobs:
   analyze:
-    name: Analyze Dart Code
+    name: Analyze Dart and Flutter Code
     runs-on: ubuntu-latest
 
     steps:
@@ -23,11 +23,10 @@ jobs:
     - name: Install dependencies
       run: flutter pub get
 
-    - name: Analyze with dart analyze
-      run: dart analyze || true  # Permite continuar si hay errores
-
-    - name: Analyze with flutter analyze
-      run: flutter analyze || true  # Permite continuar si hay errores
+    - name: Analyze code
+      run: |
+        dart analyze || true
+        flutter analyze || true
 
   dependency-check:
     name: Check Dart Dependencies
@@ -49,4 +48,4 @@ jobs:
       run: flutter pub outdated
 
     - name: Run pub security audit
-      run: flutter pub run dependency_validator || true  # Permite continuar si hay errores
+      run: flutter pub run dependency_validator || true
