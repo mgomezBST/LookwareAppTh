@@ -1,0 +1,52 @@
+name: Dart Security Analysis
+
+on:
+  push:
+    branches: ["flutterflow"]
+  pull_request:
+    branches: ["flutterflow"]
+
+jobs:
+  analyze:
+    name: Analyze Dart Code
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '2.10.5' # Puedes ajustar esta versión según la que uses
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Analyze with dart analyze
+      run: dart analyze
+
+    - name: Analyze with flutter analyze
+      run: flutter analyze
+
+  dependency-check:
+    name: Check Dart Dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '2.10.5' # Puedes ajustar esta versión según la que uses
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Check for outdated packages
+      run: flutter pub outdated
+
+    - name: Run pub security audit
+      run: flutter pub run dependency_validator
