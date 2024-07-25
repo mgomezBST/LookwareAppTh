@@ -18,7 +18,7 @@ jobs:
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '2.10.5' # Puedes ajustar esta versión según la que uses
+        flutter-version: 'latest' # Puedes ajustar esta versión según la que uses
 
     - name: Install dependencies
       run: flutter pub get
@@ -40,7 +40,7 @@ jobs:
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '2.10.5' # Puedes ajustar esta versión según la que uses
+        flutter-version: 'latest' # Puedes ajustar esta versión según la que uses
 
     - name: Install dependencies
       run: flutter pub get
